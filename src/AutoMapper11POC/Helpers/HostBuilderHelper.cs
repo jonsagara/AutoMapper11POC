@@ -65,13 +65,13 @@ namespace AutoMapper11POC.Helpers
             var logDir = Directory.GetCurrentDirectory();
 
             // Log to the project directory.
-            logDir = Path.Combine(logDir, @"..\..\..");
+            logDir = Path.GetFullPath(Path.Combine(logDir, @"..\..\..", "Logs"));
             Console.Out.WriteLine($"Logging directory: {logDir}");
 
             // Serilog is our application logger. Default to Verbose. If we need to control this dynamically at some point
             //   in the future, we can: https://nblumhardt.com/2014/10/dynamically-changing-the-serilog-level/
 
-            var logFilePathFormat = Path.Combine(logDir, "Logs", "log.txt");
+            var logFilePathFormat = Path.Combine(logDir, "log.txt");
 
             // Always write to a rolling file.
             loggerConfig

@@ -18,7 +18,9 @@ try
     using (var serviceScope = host.Services.CreateScope())
     {
         var services = serviceScope.ServiceProvider;
+        var mapper = services.GetRequiredService<IMapper>();
 
+        // Create dummy entities.
         var entities = Enumerable.Range(0, 10)
             .Select((_, ix) => new SavedItemSearchEntity
             {
@@ -29,18 +31,18 @@ try
             })
             .ToList();
 
+        // Succeeds at mapping.
+        var modelsSucceeds = mapper.Map<SavedItemSearchModel[]>(entities);
 
-        var mapper = services.GetRequiredService<IMapper>();
-
-        var models = mapper.Map<SavedItemSearchModel[]>(entities.OrderBy(s => s.Manufacturer));
+        // Fails at mapping with an OrderBy.
+        // System.Reflection.AmbiguousMatchException: Ambiguous match found.
+        var modelsFails = mapper.Map<SavedItemSearchModel[]>(entities.OrderBy(s => s.Manufacturer));
     }
 
     return 0;
 }
 catch (Exception ex)
 {
-    // Log the exception and let the application terminate. Try to write to Serilog, but in case it's not
-    //   yet configured, also write out to the console.
     Log.Fatal(ex, "Host terminated unexpectedly");
 
     return -1;

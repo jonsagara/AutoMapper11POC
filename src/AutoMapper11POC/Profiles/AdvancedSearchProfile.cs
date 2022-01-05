@@ -8,16 +8,6 @@ namespace AutoMapper11POC.Profiles
         public AdvancedSearchProfile()
         {
             CreateMap<SavedItemSearchEntity, SavedItemSearchModel>();
-
-            //CreateMap<SavedItemSearchEntity, AbstractItemsAdvancedSearchModel>();
-
-            //CreateMap<SavedItemSearchEntity, ConcreteItemsAdvancedSearchModel>()
-            //    .IncludeBase<SavedItemSearchEntity, AbstractItemsAdvancedSearchModel>();
-
-            //CreateMap<SavedItemSearchEntity, AnotherConcreateItemsAdvancedSearchModel>()
-            //    .IncludeBase<SavedItemSearchEntity, AbstractItemsAdvancedSearchModel>();
-
-            //CreateMap<SavedItemSearchEntity, UnrelatedSearchModel>();
         }
     }
 }

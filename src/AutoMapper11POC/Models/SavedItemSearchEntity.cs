@@ -1,6 +1,6 @@
 ﻿namespace AutoMapper11POC.Models
 {
-    public class SavedItemSearchEntity : IItemsAdvancedSearchModel
+    public class SavedItemSearchEntity
     {
         public string? Manufacturer { get; set; }
         public string? Importer { get; set; }
