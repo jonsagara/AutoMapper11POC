@@ -36,6 +36,8 @@ try
 
         // Fails at mapping with an OrderBy.
         // System.Reflection.AmbiguousMatchException: Ambiguous match found.
+        // Succeeds with v10.1.1.
+        // Fails with v11.0.0.
         var modelsFails = mapper.Map<SavedItemSearchModel[]>(entities.OrderBy(s => s.Manufacturer));
     }
 
